@@ -1,7 +1,7 @@
 <div class="history-page">
   <div class="repo-details">
     <div class="repo-details__logo-container">
-      <img src="https://via.placeholder.com/150"/>
+      <img src="https://via.placeholder.com/150" alt="user image"/>
     </div>
     <div class="repo-details__main">
       <div class="repo-details__main__name repo-item">{{ 'u.user/test-challenge' }}</div>
@@ -12,5 +12,15 @@
   </div>
   <div class="repo-description">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores blanditiis consequuntur dolores esse expedita libero, non quam repellendus. Aliquid debitis delectus eligendi eos in nam natus nesciunt omnis repellendus repudiandae.
+  </div>
+  <div class="commit-list">
+    <app-commit-item
+      *ngFor="let commit of commits"
+      [message]="commit.message"
+      [userName]="commit.userName"
+      [avatarURL]="commit.avatarURL"
+      [date]="commit.date"
+
+    ></app-commit-item>
   </div>
 </div>
