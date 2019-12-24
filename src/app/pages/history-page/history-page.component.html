@@ -1,26 +1,25 @@
 <div class="history-page">
   <div class="repo-details">
     <div class="repo-details__logo-container">
-      <img src="https://via.placeholder.com/150" alt="user image"/>
+      <img [src]="(project$ | async).owner.avatar_url" alt="user image"/>
     </div>
     <div class="repo-details__main">
-      <div class="repo-details__main__name repo-item">{{ 'u.user/test-challenge' }}</div>
-      <div class="repo-item">Owner: <b>{{ 'u.user' }}</b></div>
-      <div class="repo-item">Created: <b>{{ 1577173956748 | date }}</b></div>
-      <div class="repo-item">Language: <b>{{ 'TypeScript' }}</b></div>
+      <div class="repo-details__main__name repo-item"
+           [innerText]="(project$ | async).full_name"
+      ></div>
+      <div class="repo-item">Owner: <b [innerText]="(project$ | async).owner.login"></b></div>
+      <div class="repo-item">Created: <b [innerText]="(project$ | async).created_at | date"></b></div>
+      <div class="repo-item">Language: <b [innerText]="(project$ | async).language"></b></div>
     </div>
   </div>
-  <div class="repo-description">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores blanditiis consequuntur dolores esse expedita libero, non quam repellendus. Aliquid debitis delectus eligendi eos in nam natus nesciunt omnis repellendus repudiandae.
-  </div>
+  <div class="repo-description" [innerText]="(project$ | async).description"></div>
   <div class="commit-list">
     <app-commit-item
-      *ngFor="let commit of commits"
-      [message]="commit.message"
-      [userName]="commit.userName"
-      [avatarURL]="commit.avatarURL"
-      [date]="commit.date"
-
+      *ngFor="let commit of commits$ | async"
+      [message]="commit.commit.message"
+      [userName]="commit.committer.login"
+      [avatarURL]="commit.committer.avatar_url"
+      [date]="commit.commit.author.date | stringToDate"
     ></app-commit-item>
   </div>
 </div>

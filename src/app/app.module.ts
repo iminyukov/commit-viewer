@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HistoryPageComponent } from './pages/history-page/history-page.component';
 import { CommitItemComponent } from './pages/history-page/commit-item/commit-item.component';
+import {HttpClientModule} from '@angular/common/http';
+import { StringToDatePipe } from './pipes/string-to-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HistoryPageComponent,
-    CommitItemComponent
+    CommitItemComponent,
+    StringToDatePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

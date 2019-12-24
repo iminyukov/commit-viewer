@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GITHUB } from '../../shared/constants';
+import {GithubService} from '../../services/github/github.service';
 
 @Component({
   selector: 'app-history-page',
@@ -6,71 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history-page.component.scss']
 })
 export class HistoryPageComponent implements OnInit {
-  commits = [
-    {
-      message: 'Add some functions',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'AFSdsdfasdfsadf',
-      userName: 'frank123',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: '21342314123',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'Add some functions',
-      userName: 'sss21344',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'ffasfasdfsafdas',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'Add some functions',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'AFSdsdfasdfsadf',
-      userName: 'frank123',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: '21342314123',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'Add some functions',
-      userName: 'sss21344',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    },
-    {
-      message: 'ffasfasdfsafdas',
-      userName: 'u.user',
-      avatarURL: 'https://via.placeholder.com/150',
-      date: new Date()
-    }
+  githubUser = GITHUB.user;
+  githubProject = GITHUB.project;
 
-  ];
+  commits$ = this.github.getCommits(this.githubUser, this.githubProject);
+  project$ = this.github.getProject(this.githubUser, this.githubProject);
 
-  constructor() { }
+  constructor(private github: GithubService) { }
 
   ngOnInit() {
   }
