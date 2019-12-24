@@ -13,19 +13,34 @@ import {Component, Input, OnInit} from '@angular/core';
           <img [src]="avatarURL" alt="user image"/>
         </div>
         <div class="commit-item__user__name">
-          <b [innerText]="userName"></b> committed on <i>{{ date | date: 'MMM d, y' }}</i>
+          <a [href]="userURL" target="_blank">
+            <b [innerText]="userName"></b>
+          </a>
+          <a [href]="commitURL" target="_blank">
+            committed on <i>{{ date | date: 'MMM d, y' }}</i>
+          </a>
         </div>
       </div>
     </div>
   `,
   styles: [`
+    a {
+      color: unset;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
     .commit-item {
       display: flex;
       flex-direction: column;
       padding: 10px;
       border: 1px #444d56 solid;
       color: #444d56;
-      font-family: Helvetica,Arial,sans-serif
+      font-family: Helvetica,Arial,sans-serif;
+      position: relative;
+      overflow-wrap: break-word;
     }
     .commit-item__title {
       font-weight: bold;
@@ -53,6 +68,8 @@ export class CommitItemComponent implements OnInit {
   @Input() userName: string;
   @Input() avatarURL: string;
   @Input() date: Date;
+  @Input() commitURL: string;
+  @Input() userURL: string;
   @Input() marginTop = 3;
   @Input() marginBottom = 3;
 

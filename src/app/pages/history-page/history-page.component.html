@@ -1,18 +1,27 @@
 <div class="history-page">
   <div class="repo-details">
-    <div class="repo-details__logo-container">
-      <img [src]="(project$ | async).owner.avatar_url" alt="user image"/>
+    <div class="repo-details__logo-container"
+         *ngIf="(project$ | async)?.owner?.avatar_url"
+    >
+      <img
+        src="{{(project$ | async)?.owner?.avatar_url}}"
+        alt="user image"
+      />
     </div>
     <div class="repo-details__main">
       <div class="repo-details__main__name repo-item"
-           [innerText]="(project$ | async).full_name"
+           [innerText]="(project$ | async)?.full_name"
       ></div>
-      <div class="repo-item">Owner: <b [innerText]="(project$ | async).owner.login"></b></div>
-      <div class="repo-item">Created: <b [innerText]="(project$ | async).created_at | date"></b></div>
-      <div class="repo-item">Language: <b [innerText]="(project$ | async).language"></b></div>
+      <div class="repo-item">Owner: <b [innerText]="(project$ | async)?.owner?.login"></b></div>
+      <div class="repo-item">Created: <b [innerText]="(project$ | async)?.created_at | date"></b></div>
+      <div class="repo-item">Language: <b [innerText]="(project$ | async)?.language"></b></div>
+    </div>
+    <div class="repo-details__actions">
+      <a [href]="(project$ | async)?.html_url" target="_blank">Visit repo page</a>
+      <a [href]="(project$ | async)?.owner.html_url" target="_blank">View owner page</a>
     </div>
   </div>
-  <div class="repo-description" [innerText]="(project$ | async).description"></div>
+  <div class="repo-description" [innerText]="(project$ | async)?.description"></div>
   <div class="commit-list">
     <app-commit-item
       *ngFor="let commit of commits$ | async"
@@ -20,6 +29,8 @@
       [userName]="commit.committer.login"
       [avatarURL]="commit.committer.avatar_url"
       [date]="commit.commit.author.date | stringToDate"
+      [commitURL]="commit.html_url"
+      [userURL]="commit.committer.html_url"
     ></app-commit-item>
   </div>
 </div>
