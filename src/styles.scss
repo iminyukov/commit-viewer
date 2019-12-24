@@ -5,6 +5,9 @@ html, body {
 }
 
 a {
-  color: blue;
-  text-decoration: underline;
+  color: unset;
+  text-decoration: unset;
+  &:hover {
+    text-decoration: underline;
+  }
 }

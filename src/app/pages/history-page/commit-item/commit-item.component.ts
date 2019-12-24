@@ -10,15 +10,11 @@ import {Component, Input, OnInit} from '@angular/core';
       <div class="commit-item__title" [innerText]="message"></div>
       <div class="commit-item__user">
         <div class="commit-item__user__img-wrapper">
-          <img [src]="avatarURL" alt="user image"/>
+          <img [src]="avatarURL" alt="user image" draggable="false" />
         </div>
         <div class="commit-item__user__name">
-          <a [href]="userURL" target="_blank">
-            <b [innerText]="userName"></b>
-          </a>
-          <a [href]="commitURL" target="_blank">
-            committed on <i>{{ date | date: 'MMM d, y' }}</i>
-          </a>
+          <a [href]="userURL" target="_blank"><b [innerText]="userName"></b></a>{{' '}}
+          <a [href]="commitURL" target="_blank">committed on <i>{{ date | date: 'MMM d, y' }}</i></a>
         </div>
       </div>
     </div>
@@ -28,7 +24,6 @@ import {Component, Input, OnInit} from '@angular/core';
       color: unset;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }

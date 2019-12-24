@@ -6,19 +6,26 @@
       <img
         src="{{(project$ | async)?.owner?.avatar_url}}"
         alt="user image"
+        draggable="false"
       />
     </div>
     <div class="repo-details__main">
-      <div class="repo-details__main__name repo-item"
-           [innerText]="(project$ | async)?.full_name"
-      ></div>
-      <div class="repo-item">Owner: <b [innerText]="(project$ | async)?.owner?.login"></b></div>
+      <a [href]="(project$ | async)?.html_url" target="_blank"
+         title="Click to visit on GitHub"
+      >
+        <div class="repo-details__main__name repo-item"
+             [innerText]="(project$ | async)?.full_name"
+        ></div>
+      </a>
+      <div class="repo-item">Owner:
+        <a [href]="(project$ | async)?.owner.html_url" target="_blank"
+           title="Click to visit on GitHub"
+        >
+          <b [innerText]="(project$ | async)?.owner?.login"></b>
+        </a>
+      </div>
       <div class="repo-item">Created: <b [innerText]="(project$ | async)?.created_at | date"></b></div>
       <div class="repo-item">Language: <b [innerText]="(project$ | async)?.language"></b></div>
-    </div>
-    <div class="repo-details__actions">
-      <a [href]="(project$ | async)?.html_url" target="_blank">Visit repo page</a>
-      <a [href]="(project$ | async)?.owner.html_url" target="_blank">View owner page</a>
     </div>
   </div>
   <div class="repo-description" [innerText]="(project$ | async)?.description"></div>
