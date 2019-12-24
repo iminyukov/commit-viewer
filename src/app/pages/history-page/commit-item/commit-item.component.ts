@@ -3,18 +3,15 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'app-commit-item',
   template: `
-    <div class="commit-item"
-         [style.margin-top]="marginTop + 'px'"
-         [style.margin-bottom]="marginBottom + 'px'"
-    >
+    <div class="commit-item">
       <div class="commit-item__title" [innerText]="message"></div>
       <div class="commit-item__user">
         <div class="commit-item__user__img-wrapper">
           <img [src]="avatarURL" alt="user image" draggable="false" />
         </div>
         <div class="commit-item__user__name">
-          <a [href]="userURL" target="_blank"><b [innerText]="userName"></b></a>{{' '}}
-          <a [href]="commitURL" target="_blank">committed on <i>{{ date | date: 'MMM d, y' }}</i></a>
+          <a [href]="userURL" target="_blank" title="View GitHub profile"><b [innerText]="userName"></b></a>{{' '}}
+          <a [href]="commitURL" target="_blank" title="View commit on GitHub">committed on <i>{{ date | date: 'MMM d, y' }}</i></a>
         </div>
       </div>
     </div>
@@ -31,11 +28,17 @@ import {Component, Input, OnInit} from '@angular/core';
       display: flex;
       flex-direction: column;
       padding: 10px;
-      border: 1px #444d56 solid;
+      border: 1px #aab0b7 solid;
       color: #444d56;
       font-family: Helvetica,Arial,sans-serif;
       position: relative;
       overflow-wrap: break-word;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      border-radius: 5px;
+    }
+    .commit-item:hover {
+      background: #f6fbff;
     }
     .commit-item__title {
       font-weight: bold;
@@ -65,8 +68,6 @@ export class CommitItemComponent implements OnInit {
   @Input() date: Date;
   @Input() commitURL: string;
   @Input() userURL: string;
-  @Input() marginTop = 3;
-  @Input() marginBottom = 3;
 
   constructor() { }
 
