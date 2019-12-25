@@ -41,6 +41,7 @@
     ></app-commit-item>
   </div>
   <button (click)="fetchNextPage()"
-          *ngIf="!isPageLast"
+          *ngIf="!isPageLast && !isPageLoading"
   >Fetch More!</button>
+  <app-loader *ngIf="isPageLoading"></app-loader>
 </div>
