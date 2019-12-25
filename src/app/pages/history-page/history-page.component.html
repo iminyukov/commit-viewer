@@ -31,7 +31,7 @@
   <div class="repo-description" [innerText]="(project$ | async)?.description"></div>
   <div class="commit-list">
     <app-commit-item
-      *ngFor="let commit of commits$ | async"
+      *ngFor="let commit of commits"
       [message]="commit.commit.message"
       [userName]="commit.committer.login"
       [avatarURL]="commit.committer.avatar_url"
@@ -40,4 +40,7 @@
       [userURL]="commit.committer.html_url"
     ></app-commit-item>
   </div>
+  <button (click)="fetchNextPage()"
+          *ngIf="!isPageLast"
+  >Fetch More!</button>
 </div>
