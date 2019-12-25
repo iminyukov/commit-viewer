@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import {getEndpointProject, getEndpointCommits, formGetCommitResponse} from './helpers';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IGithubCommit, IGithubProject} from '../../shared/models';
 import {map} from 'rxjs/operators';
 
-export const COMMITS_PER_PAGE = 5;
-export interface IGetCommitResponse { isLastPage: boolean, commits: IGithubCommit[] }
+import {IGetCommitResponse, IGithubCommit, IGithubProject} from '../../shared/model';
+import {getEndpointProject, getEndpointCommits, formGetCommitResponse} from './helpers';
+import {COMMITS_PER_PAGE} from './constants';
 
 @Injectable({
   providedIn: 'root'

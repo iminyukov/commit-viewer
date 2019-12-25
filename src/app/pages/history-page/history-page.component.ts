@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GITHUB } from '../../shared/constants';
 import {GithubService} from '../../services/github/github.service';
-import {IGithubCommit} from '../../shared/models';
+import {IGithubCommit} from '../../shared/model';
 
 @Component({
   selector: 'app-history-page',

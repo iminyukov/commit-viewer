@@ -30,3 +30,5 @@ export interface IGithubCommit {
     }
   }
 }
+
+export interface IGetCommitResponse { isLastPage: boolean, commits: IGithubCommit[] }
