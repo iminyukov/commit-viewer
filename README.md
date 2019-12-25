@@ -1,27 +1,14 @@
-# CommitViewer
+#CommitViewer
+The project that allows tracking the repository commits based on [GitHub API.](http://https://developer.github.com/v3/ "GitHub API.")
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
+## Set up the project
+1. Install dependencies `npm install`
+2. Go to the constants file `src/app/shared/constants.ts` and point `user` and `project` constants:
 
-## Development server
+        export const GITHUB = {
+          user: 'YOUR_USER_NAME',
+          project: 'YOUR_PROJECT_REPO_NAME'
+        };
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Start the project
+Run `npm start` and navigate to `http://localhost:4200/`.
