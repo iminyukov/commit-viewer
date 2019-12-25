@@ -11,11 +11,11 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getProject(user: string, project: string): Observable<IGithubProject> {
-    return this.http.get(getEndpointProject(user, project))
+    return this.http.get<IGithubProject>(getEndpointProject(user, project))
   }
 
   getCommits(user: string, project: string): Observable<IGithubCommit[]> {
-    return this.http.get(getEndpointCommits(user, project));
+    return this.http.get<IGithubCommit[]>(getEndpointCommits(user, project));
   }
 
 }
